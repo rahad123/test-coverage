@@ -1,0 +1,46 @@
+{
+  "name": "testing-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js --timeout 15000 --exit",
+    "dev": "nodemon server.js",
+    "coverage": "nyc npm run test",
+    "dev:docker": "docker-compose --file docker-compose.dev.yml up",
+    "dev:docker:down": "docker-compose --file docker-compose.dev.yml down --remove-orphans",
+    "dev:docker:rebuild": "docker-compose --file docker-compose.dev.yml build --no-cache"
+  },
+  "nyc": {
+    "include": [
+      "user",
+      "src/audiencePlan/**/*.js"
+    ],
+    "exclude": "topic",
+    "check-coverage": true,
+    "branches": 80,
+    "lines": 60.65,
+    "functions": 80,
+    "statements": 80
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "apollo-server-express": "^3.10.3",
+    "bcrypt": "^5.1.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "faker": "^5.5.3",
+    "joi": "^17.6.4",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mocha": "^10.1.0",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
+    "winston": "^3.8.2"
+  }
+}
